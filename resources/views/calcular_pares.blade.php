@@ -2,14 +2,14 @@
 @section('content')
     <div class="" id="pares">
         <p class="text-justify font-weight-bold">
-            Obtener el numero de pares de una matriz, cuya diferencia es igual al valor objetivo </p>
+            Obtener el numero de pares de una matriz, cuya diferencia es igual al valor objetivo.</p>
         <div class="row">
             <div class="col-lg-4 mb-lg-0 mb-2">
-
                 <div class="card">
+                    <div class="card-header bg-primary">
+                        <h5 class="card-title text-light font-weight-bold">Realizar Calculo</h5>
+                    </div>
                     <div class="card-body">
-                        <h4 class="text-center font-weight-bold">Realizar Calculo</h4>
-
                         <div class="row">
                             <div class="col-lg-12">
                                 <label for="">Ingrese el valor objetivo</label>
@@ -37,31 +37,36 @@
             </div>
             <div class="col-lg-8">
                 <div class="card">
+                    <div class="card-header bg-primary">
+                        <h5 class="card-title text-light font-weight-bold">Lista de Peticiones</h5>
+                    </div>
                     <div class="card-body">
-                        <h4 class="text-center font-weight-bold"> Lista de Peticiones</h4>
-                        <table class="table table-bordered ">
-                            <thead class="p-0 table-dark">
-                                <tr>
-                                    <th class="p-0 px-1 text-light">Valor objetivo</th>
-                                    <th class="p-0 px-1 text-light">Arreglo</th>
-                                    <th class="p-0 px-1 text-light">Petición</th>
-                                    <th class="p-0 px-1 text-light">N° Pares</th>
-                                    <th class="p-0 px-1 text-light">Hora</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(prueba,index) in pruebas">
-                                    <td class="text-right" style="vertical-align: middle">@{{ prueba.valor_objetivo }}</td>
-                                    <td class="text-right" style="vertical-align: middle">@{{ prueba.arreglo }}</td>
-                                    <td>
-                                        <vue-json-pretty :data="prueba.peticion" :key="prueba.hora"
-                                            :deep="1" />
-                                    </td>
-                                    <td class="text-right" style="vertical-align: middle">@{{ prueba.respuesta }}</td>
-                                    <td style="vertical-align: middle">@{{ prueba.hora }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <h4 class="text-center font-weight-bold"> </h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead class="p-0 table-dark">
+                                    <tr>
+                                        <th class="p-0 px-1 text-light">Valor objetivo</th>
+                                        <th class="p-0 px-1 text-light">Arreglo</th>
+                                        <th class="p-0 px-1 text-light">Petición</th>
+                                        <th class="p-0 px-1 text-light">N° Pares</th>
+                                        <th class="p-0 px-1 text-light">Hora</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(prueba,index) in pruebas">
+                                        <td class="text-right" style="vertical-align: middle">@{{ prueba.valor_objetivo }}</td>
+                                        <td class="text-right" style="vertical-align: middle">@{{ prueba.arreglo }}</td>
+                                        <td>
+                                            <vue-json-pretty :data="prueba.peticion" :key="prueba.hora"
+                                                :deep="1" />
+                                        </td>
+                                        <td class="text-right" style="vertical-align: middle">@{{ prueba.respuesta }}</td>
+                                        <td style="vertical-align: middle">@{{ prueba.hora }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -103,18 +108,30 @@
                 }
             },
             methods: {
+                /**
+                 * Validación para el input de valor de objetivo
+                 **/
                 numberMask(value) {
                     return [value.replace(/\D+/g, '')];
                 },
+                /**
+                 * Validación para el input de arreglos de enteros
+                 **/
                 arrayMask(value) {
                     return [value.replace(/[a-zA-Z-_\s\W]+$/g, " ")];
                 },
+                /**
+                 * Obtener un objeto para realizar la petición
+                 **/
                 getData() {
                     return {
                         valor_objetivo: this.valor,
                         arreglo: this.getArreglos
                     }
                 },
+                /**
+                 * Función para obtener los el numero de pares
+                 **/
                 calcular() {
                     let set = this;
                     Swal.fire({
@@ -151,6 +168,9 @@
                         }
                     });
                 },
+                /**
+                 * Función para almacenar la respuesta en un arreglo y listar en una tabla
+                 **/
                 setResponse({
                     data
                 }) {
@@ -163,6 +183,9 @@
                     }
                     this.pruebas.push(prueba);
                 },
+                /**
+                 * Función para limpiar los inputs
+                 **/
                 clearData() {
                     this.valor = '';
                     this.arreglo = '';

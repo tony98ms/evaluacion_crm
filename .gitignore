@@ -1,7 +1,7 @@
 .idea/*
 /node_modules
 /public/hot
-/public/.htaccess
+# /public/.htaccess
 /public/storage
 /storage/*.key
 /vendor
@@ -16,5 +16,5 @@ yarn-error.log
 .DS_Store
 package-lock.json
 composer.lock
-.htaccess
+# .htaccess
 .vscode/settings.json
