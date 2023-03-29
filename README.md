@@ -67,3 +67,9 @@ Se agregaron 2 rutas:
 -   **END POINT:** /calcular-pares
 -   **METODO:** GET
 -   **DESCRIPCIÓN:** Ruta accesible desde el navegador que cuenta con una interfaz grafica para realizar pruebas de la primera ENDPOINT mediante un formulario.
+
+Asegúrese de ejecutar el siguiente comando para limpiar la cache de las rutas para la API:
+
+```bash
+php artisan api:cache
+```

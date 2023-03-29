@@ -21,7 +21,6 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [], function ($api) {
     $api->post('register', 'App\Http\Controllers\AuthController@register');
-    $api->post('pares', ['as' => 'pares.store', 'uses' => 'App\Http\Controllers\ParesController@store']);
 });
 
 $api->version('v1', ['middleware' => [EnsureUserIsValid::class]], function ($api) {
@@ -34,4 +33,5 @@ $api->version('v1', ['middleware' => [EnsureUserIsValid::class, 'auth:sanctum']]
 
 $api->version('v1', ['middleware' => ['api.throttle', 'auth:sanctum'], 'limit' => 200, 'expires' => 5], function ($api) {
     $api->get('asesores', 'App\Http\Controllers\UsersController@getAsesores');
+    $api->post('pares', ['as' => 'pares.store', 'uses' => 'App\Http\Controllers\ParesController@store']);
 });
