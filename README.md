@@ -1,68 +1,69 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# PRUEBA TECNICA
 
-### Prerequisitos
-- Composer^2.0.10
-- Node^14.16
-- MySql
+## Servicios y Dependencias
 
-## Instalación
-- Ejecutar Composer install
-- Copiar el archivo .env_original (cp .env_original .env)
-- Modificar variables del archivo .env de acuedo al ambiente
-- Crear App_Key -> ejecutar php artisan key:generate
-- Ejecutar php artisan migrate
-- Ejecutar npm install
+Para el alojamiento del sitio se uso lo siguiente
 
-## About Laravel
+-   **Dominio** : [https://tonystoreec.com](https://tonystoreec.com)
+-   **Tipo de Alojamiento** : VPS
+-   **Proveedor** : CONTABO
+-   **Sistema Operativo** : UBUNTU 20.04
+-   **Servidor Web** : APACHE
+-   **Base de Datos** : MYSQL
+-   **Versión de PHP** : 8.1
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tecnologías utilizadas para la prueba
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   Laravel 8 - PHP 8.1
+-   Vue JS 2.7
+-   MySql
+-   Apache (Laragon)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Guía de implementación
 
-## Learning Laravel
+**1.** Clonar el repositorio de la siguiente ruta : [https://github.com/tony98ms/evaluacion_crm](https://github.com/tony98ms/evaluacion_crm)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**2.** Instalar las dependencias mediante el siguiente comando:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+composer install
+```
 
-## Laravel Sponsors
+Asegúrese de tener todas las extensiones necesarias al momento de ejecutar el comando, el proyecto soporta actualmente versiones de PHP 7.4 & 8.0+.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**3.** Luego copie el archivo **.env.example** utilizando el siguiente comando para que pueda inicializar el proyecto.
 
-### Premium Partners
+```bash
+cp .env.example .env
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+Este archivo contiene las configuraciones de base para que pueda inicializar el proyecto. Es importante recalcar que deberá tener previamente cargada las bases de datos en su entorno de desarrollo para para el uso del api. Así mismo siéntase libre de modificar las variables de entorno para las conexiones respectivas a la BD
 
-## Contributing
+**4.** Luego de eso podrá ejecutar en su navegador el proyecto, dependiendo de su entorno de desarrollo podrá correr la aplicación de varias formas. Entre ellas mediante La consola de ARTISAN, o con algún entorno de desarrollo preconfigurado como lo es laragon, xamp o wamp. Ejemplo para lanzar la aplicación usando **ARTISAN**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+php artisan serve
+```
 
-## Code of Conduct
+Adicional podra especificar en que puerto o host desea que se lance la aplicación.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+php artisan serve –-port=8800 --host=192.168.100.28
+```
 
-## Security Vulnerabilities
+Una vez eso, podrá acceder a la siguiente ruta http://192.168.100.28:8800 (Remplace host y puerto por sus respectivos valores).
+Se agregaron 2 rutas:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## NUEVAS RUTAS
 
-## License
+### **OBTENER PARES**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-   **END POINT:** /api/pares
+-   **METODO:** POST
+-   **DESCRIPCIÓN:** En esta ruta se podrá realizar una petición con los parámetros proporcionados en la documentación para obtener el total de pares de un arreglo en donde la diferencia coincida con un valor objetivo.
+
+### **REALIZAR PRUEBA**
+
+-   **END POINT:** /calcular-pares
+-   **METODO:** GET
+-   **DESCRIPCIÓN:** Ruta accesible desde el navegador que cuenta con una interfaz grafica para realizar pruebas de la primera ENDPOINT mediante un formulario.

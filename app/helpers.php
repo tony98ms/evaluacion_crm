@@ -1,5 +1,5 @@
 <?php
- 
+
 use App\Models\Companies;
 use App\Models\Users;
 use Carbon\Carbon;
@@ -217,7 +217,7 @@ function get_medio_inconcert($fuente, $descripcion)
 {
     $default = [
         "inconcert" => 13, //WebChat Casabaca
-        "facebook" => 11,//Facebook Casabaca
+        "facebook" => 11, //Facebook Casabaca
         "whatsapp" => 14, //WhatsApp Casabaca
         "1800" => 10, //Llamadas nuevos
     ];
@@ -236,7 +236,7 @@ function get_medio_inconcert($fuente, $descripcion)
         return $medios[$descripcion];
     }
 
-    return $default[$fuente] ?? 13;//WebChat Casabaca
+    return $default[$fuente] ?? 13; //WebChat Casabaca
 }
 
 function get_domain_company()
@@ -330,5 +330,26 @@ function getReproceso()
 {
     return false;
 }
-
-?>
+/**
+ * Obtener el numero de pares de elemento de la matriz que tienen una diferencia igual al valor del objetivo.
+ *
+ * @param integer $diferencia Diferencia de objeto
+ * @param array $arreglo Matriz de enteros
+ * @return int
+ */
+function pares(int $valor_objetivo, array $arreglo = []): int
+{
+    $count = 0;
+    foreach ($arreglo as  $int) {
+        foreach ($arreglo as $value) {
+            if ($int - $value == $valor_objetivo) {
+                $count++;
+            }
+        }
+    }
+    return $count;
+}
+function route_api($name)
+{
+    return app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route($name);
+}
